@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_FILE_PATH = path.join(__dirname, 'sample-data', 'data.json');
+const DATA_FILE_PATH = path.join(__dirname, '..', 'sample-data', 'data.json');
 
 // Security constants
 const MAX_TITLE_LENGTH = 200;
