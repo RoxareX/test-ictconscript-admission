@@ -1,4 +1,68 @@
-# ICT Conscript Admission Test
+# ICT Conscript Admission Test - Unit Logbook Application
+
+This repository contains a unit logbook application that has been modified to use Node.js backend with file-based data storage.
+
+## Application Overview
+
+A web-based logbook application for recording unit activities with location data.
+
+### Features
+
+- Add new entries with title, content, and optional GPS coordinates
+- View all entries sorted by timestamp (newest first)
+- Data persistence using Node.js and JSON file storage
+- Clean, responsive web interface
+
+### Requirements
+
+- Node.js (version 12 or higher)
+- npm (Node Package Manager)
+
+### Installation
+
+1. Clone or download this repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Application
+
+1. Start the server:
+   ```bash
+   npm start
+   ```
+   
+   Or for development with auto-restart:
+   ```bash
+   npm run dev
+   ```
+
+2. Open your web browser and go to: `http://localhost:3000`
+
+### Changes Made
+
+- **Removed localStorage dependency** - Data now persists on the server
+- **Removed "Save Data" button** - Entries are automatically saved when added
+- **Added Express.js backend** - Provides API endpoints for data management
+- **Improved data persistence** - Data survives browser refresh and is accessible from multiple devices
+
+### File Structure
+
+```
+├── index.html          # Main HTML file
+├── index.js           # Client-side JavaScript
+├── style.css          # Stylesheet
+├── server.js          # Express server
+├── package.json       # Node.js dependencies
+└── sample-data/
+    └── data.json      # Data storage file
+```
+
+---
+
+## Original Admission Test Information
+
 Thank you for taking interest in applying into our ICT Conscript Program. 
 
 In this repository you will find our **Admission Test** to the program. 

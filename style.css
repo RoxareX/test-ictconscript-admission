@@ -1,0 +1,380 @@
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    min-height: 100vh;
+    color: #ecf0f1;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #1a252f;
+    padding: 30px;
+    border: 2px solid #34495e;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.container::before {
+    content: "CLASSIFIED";
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 12px;
+    color: #e74c3c;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h1 {
+    color: #f39c12;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 2px solid #34495e;
+    padding-bottom: 15px;
+}
+
+.entry {
+    border: 1px solid #34495e;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #1e2a33 0%, #1a252f 100%);
+    border-left: 4px solid #27ae60;
+    position: relative;
+    font-family: 'Courier New', monospace;
+}
+
+.entry::before {
+    content: "●";
+    position: absolute;
+    left: -8px;
+    top: 20px;
+    background: #27ae60;
+    color: #1a252f;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+}
+
+.entry-title {
+    font-weight: bold;
+    color: #f39c12;
+    margin-bottom: 8px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.entry-time {
+    color: #7f8c8d;
+    font-size: 12px;
+    margin-bottom: 12px;
+    font-family: 'Courier New', monospace;
+    background: #2c3e50;
+    padding: 2px 8px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.entry-body {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #bdc3c7;
+}
+
+.entry-location {
+    color: #95a5a6;
+    font-size: 11px;
+    font-family: 'Courier New', monospace;
+    background: #34495e;
+    padding: 4px 8px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.error {
+    color: #e74c3c;
+    padding: 15px;
+    background: linear-gradient(135deg, #2c1810 0%, #3d1d0f 100%);
+    border: 1px solid #e74c3c;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #f39c12;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+button {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: #1a252f;
+    border: 2px solid #27ae60;
+    padding: 12px 24px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+    border-color: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Special styling for Save Data button */
+button[onclick="saveEntriesToFile()"] {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    border-color: #f39c12;
+}
+
+button[onclick="saveEntriesToFile()"]:hover {
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    border-color: #e67e22;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button-group button {
+    margin-bottom: 0;
+    min-width: 140px;
+}
+
+/* Drawer styles */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 450px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+    border-left: 3px solid #27ae60;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    transition: right 0.4s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.drawer.open {
+    right: 0;
+}
+
+.drawer-content {
+    padding: 30px;
+    color: #ecf0f1;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #34495e;
+}
+
+.drawer-header h3 {
+    margin: 0;
+    color: #f39c12;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+}
+
+.close-btn {
+    background: #e74c3c;
+    border: 2px solid #c0392b;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ecf0f1;
+    padding: 8px;
+    margin: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #c0392b;
+    border-color: #a93226;
+    transform: scale(1.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f39c12;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #34495e;
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    box-sizing: border-box;
+    background: #2c3e50;
+    color: #ecf0f1;
+    transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #27ae60;
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.2);
+    background: #34495e;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #34495e;
+}
+
+.form-actions button {
+    margin-bottom: 0;
+    flex: none;
+    min-width: 100px;
+}
+
+.form-actions button[type="button"] {
+    background: linear-gradient(135deg, #7f8c8d 0%, #95a5a6 100%);
+    border-color: #7f8c8d;
+}
+
+.form-actions button[type="button"]:hover {
+    background: linear-gradient(135deg, #6c7b7d 0%, #7f8c8d 100%);
+    border-color: #6c7b7d;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    backdrop-filter: blur(2px);
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a252f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #34495e;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #27ae60;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .drawer {
+        width: 100vw;
+        right: -100vw;
+    }
+    
+    .container {
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .button-group button {
+        width: 100%;
+        max-width: 300px;
+    }
+}

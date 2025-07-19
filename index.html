@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; media-src 'self'; frame-src 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <title>Unit Logbook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Unit Logbook</h1>
+        <div class="button-group">
+            <button onclick="loadEntries()">Load Entries</button>
+            <button onclick="openDrawer()">Add New Entry</button>
+        </div>
+        <div id="content"></div>
+    </div>
+
+    <!-- Drawer for adding new entries -->
+    <div id="drawer" class="drawer">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h3>Add New Entry</h3>
+                <button class="close-btn" onclick="closeDrawer()">&times;</button>
+            </div>
+            <form id="entryForm" onsubmit="addEntry(event)">
+                <div class="form-group">
+                    <label for="entryTitle">Title:</label>
+                    <input type="text" id="entryTitle" name="title" maxlength="200" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="entryBody">Content:</label>
+                    <textarea id="entryBody" name="body" rows="4" maxlength="5000" required autocomplete="off"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="entryLat">Latitude (optional):</label>
+                    <input type="number" id="entryLat" name="lat" step="any" min="-90" max="90" placeholder="e.g., 60.1503" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="entryLon">Longitude (optional):</label>
+                    <input type="number" id="entryLon" name="lon" step="any" min="-180" max="180" placeholder="e.g., 25.0293" autocomplete="off">
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="closeDrawer()">Cancel</button>
+                    <button type="submit">Add Entry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Overlay for drawer -->
+    <div id="overlay" class="overlay" onclick="closeDrawer()"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>
