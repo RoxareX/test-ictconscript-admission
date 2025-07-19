@@ -86,7 +86,7 @@ function validateEntry(entry) {
 
 // Middleware
 app.use(cors({
-    origin: "https://roxarex.github.io/test-ictconscript-admission/",
+    origin: "https://roxarex.github.io/",
     credentials: false
 }));
 
