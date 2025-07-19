@@ -78,29 +78,5 @@
     "isoTime": "2025-05-16T06:45:00Z",
     "lat": null,
     "lon": null
-  },
-  {
-    "title": "asdsdadsd",
-    "body": "asdasdasdasd",
-    "lat": null,
-    "lon": null,
-    "id": "11",
-    "isoTime": "2025-07-19T17:06:14.241Z"
-  },
-  {
-    "title": "<script>alert(\"!!!\");</script>",
-    "body": "<script>alert(\"!!!\");</script>",
-    "lat": null,
-    "lon": null,
-    "id": "12",
-    "isoTime": "2025-07-19T17:08:08.194Z"
-  },
-  {
-    "title": "<a>BLKYATTT</a>",
-    "body": "<a>BLKYATTT</a>",
-    "lat": null,
-    "lon": null,
-    "id": "13",
-    "isoTime": "2025-07-19T17:31:53.115Z"
   }
 ]
