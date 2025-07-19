@@ -75,7 +75,7 @@ function sanitizeInput(input) {
 // Function to list all data from the server
 async function listAllEntries() {
     try {
-        const response = await fetch('/api/entries');
+        const response = await fetch('https://test-ictconscript-admission.onrender.com/api/entries');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
         }
@@ -185,7 +185,7 @@ function generateNextId() {
 // Function to save a new entry to the server
 async function saveEntryToServer(entryData) {
     try {
-        const response = await fetch('/api/entries', {
+        const response = await fetch('https://test-ictconscript-admission.onrender.com/api/entries', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -408,7 +408,7 @@ window.addEventListener('beforeunload', function() {
 const originalFetch = window.fetch;
 window.fetch = function(...args) {
     // Add basic request validation
-    if (args[0] && typeof args[0] === 'string' && !args[0].startsWith('/api/') && !args[0].startsWith('http')) {
+    if (args[0] && typeof args[0] === 'string' && !args[0].startsWith('https://test-ictconscript-admission.onrender.com/api/') && !args[0].startsWith('http')) {
         console.warn('Potentially unsafe fetch request blocked:', args[0]);
         return Promise.reject(new Error('Invalid request'));
     }
