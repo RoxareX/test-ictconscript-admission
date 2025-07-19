@@ -408,9 +408,19 @@ window.addEventListener('beforeunload', function() {
 const originalFetch = window.fetch;
 window.fetch = function(...args) {
     // Add basic request validation
-    if (args[0] && typeof args[0] === 'string' && !args[0].startsWith('https://test-ictconscript-admission.onrender.com/api/') && !args[0].startsWith('http')) {
-        console.warn('Potentially unsafe fetch request blocked:', args[0]);
-        return Promise.reject(new Error('Invalid request'));
+    const url = args[0];
+    if (url && typeof url === 'string') {
+        // Allow requests to your Render.com API and relative URLs
+        const isAllowedUrl = url.startsWith('/api/') || 
+                            url.startsWith('https://test-ictconscript-admission.onrender.com/') ||
+                            url.startsWith('./') ||
+                            url.startsWith('../') ||
+                            !url.startsWith('http'); // Allow relative URLs
+        
+        if (!isAllowedUrl) {
+            console.warn('Potentially unsafe fetch request blocked:', url);
+            return Promise.reject(new Error('Invalid request'));
+        }
     }
     
     return originalFetch.apply(this, args);
