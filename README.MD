@@ -19,9 +19,11 @@ https://roxarex.github.io/test-ictconscript-admission/
 
 the backend of this is https://test-ictconscript-admission.onrender.com
 
->[!NOTE] the above specified site can take up to 50 seconds to load depending on how much it was idle.
+>[!NOTE]
+the above specified site can take up to 50 seconds to load depending on how much it was idle.
 
->[!NOTE] So if the json doesn't want to load from the main website its probably because of the same "issue" since its for free it takes longer.
+>[!NOTE]
+So if the json doesn't want to load from the main website its probably because of the same "issue" since its for free it takes longer.
 
 
 Time to make was approx 1,5h
@@ -50,4 +52,5 @@ node server.js
 And the server should start and you can open it in: <br>
 http://localhost:3000
 
->[!WARNING] The json will not be able to load due to CORS origin not matching the original url that being https://roxarex.github.io/
+>[!WARNING]
+The json will not be able to load due to CORS origin not matching the original url that being https://roxarex.github.io/
